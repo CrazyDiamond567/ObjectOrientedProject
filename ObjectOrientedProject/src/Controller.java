@@ -10,6 +10,8 @@ public class Controller {
 			case "m":
 				map.handleMovement(inputArray[1]);
 				break;
+			case "quit":
+				//quit the program
 		}
 			
 	}
