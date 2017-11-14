@@ -1,13 +1,19 @@
-//Omeed was here
-public class Controller {
+import java.util.*;
 
-	public static void parseInput(String input) {
+public class Controller {
 		
-		String[] commandSplit = input.split(" ");
-		
-		if (commandSplit[0].equals("test")) {
-			System.out.println(commandSplit[1]);
+	public void parseInput(String input, Map map) {
+		String[] inputArray = input.split(" ");
+			
+		switch (inputArray[0]) {
+			case "move":
+			case "m":
+				map.handleMovement(inputArray[1]);
+				break;
+			case "quit":
+				//quit the program
 		}
+			
 	}
-	
+		
 }
