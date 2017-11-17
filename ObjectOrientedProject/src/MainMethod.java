@@ -29,14 +29,14 @@ public class MainMethod {
 		
 		//initialize input variable
 		String input = "";
-		
+		boolean running = true;
 		
 		//game loop
-		while (true) {
+		while (running) {
 			System.out.print("input > ");
 			input = reader.nextLine();
 			if (input != "") {
-				controller.parseInput(input, map);
+				running = controller.parseInput(input, map);
 				input = "";
 			}
 		}
