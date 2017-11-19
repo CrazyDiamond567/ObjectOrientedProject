@@ -8,6 +8,9 @@ public class Map {
 	public void addRoomToMap(Room room, int x, int y, int z) {
 		worldspace[x][y][z] = room;
 	}
+	public Room returnCurrentRoom() {
+		return worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]];
+	}
 	public void handleMovement(String direction) {
 		switch (direction) {
 			case "north":

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Controller {
 		
-	public boolean parseInput(String input, Map map) {
+	public void parseInput(String input, Map map) {
 		String[] inputArray = input.split(" ");
 		boolean result = true;
 			
@@ -14,14 +14,16 @@ public class Controller {
 			case "m":
 				map.handleMovement(inputArray[1]);
 				break;
-			case "quit":
-				result = false;
-				System.out.println("you have quit the game");
+			case "talk":
+			case "t":
+				Room room = map.returnCurrentRoom();
+				room.handleTalk(inputArray[1]);
 				break;
+			case "quit":
+				System.out.println("you have quit the game");
+				System.exit(0);
 				// quit program
-			
 		}
-		return result;	
 	}
 		
 }

@@ -9,6 +9,7 @@ public class MainMethod {
 		Controller controller = new Controller();
 		Map map = new Map();
 		
+		//example rooms
 		Room room1 = new Room("School Entrance","entrance of school, to the north is the Main Hallway");
 		map.addRoomToMap(room1, 50, 0, 0);
 		
@@ -27,6 +28,18 @@ public class MainMethod {
 		Room room6 = new Room("Stairwell(Level 1)","Go Down");
 		map.addRoomToMap(room6, 50, 2, 1);
 		
+		//example conversation
+		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob, I am an example NPC");
+		Conversation.Node node1 = conversation1.root.addOption("1. How do you feel?", "node1", "Nothing, as I am a soulless NPC");
+		
+		
+		
+		//example npc
+		NPC npc1 = new NPC("bob", conversation1);
+		
+		//add npc to room
+		room1.addNPCToRoom(npc1);
+		
 		//initialize input variable
 		String input = "";
 		boolean running = true;
@@ -36,7 +49,7 @@ public class MainMethod {
 			System.out.print("input > ");
 			input = reader.nextLine();
 			if (input != "") {
-				running = controller.parseInput(input, map);
+				controller.parseInput(input, map);
 				input = "";
 			}
 		}
