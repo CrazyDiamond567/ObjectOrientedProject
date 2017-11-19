@@ -8,14 +8,15 @@ public class Controller {
 			
 		switch (inputArray[0]) {
 			case "move":
-			   //move function code 
-				break;
-			
+				//switch statements can be allowed to fall through, see link
+				//https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html
+				//I am taking advantage of that behavior here
 			case "m":
 				map.handleMovement(inputArray[1]);
 				break;
 			case "quit":
 				result = false;
+				System.out.println("you have quit the game");
 				break;
 				// quit program
 			
