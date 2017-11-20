@@ -7,6 +7,14 @@ public class Controller {
 		boolean result = true;
 			
 		switch (inputArray[0]) {
+			case "help":
+				System.out.println("You have Selected Help: " + '\n'
+	    			+ "--> For More Information - Type 'info' " + '\n'
+	    			+ "--> To Quit - Type 'quit'"
+	    			);
+				break;
+			case "info":
+				System.out.println("Adventure Game");
 			case "move":
 				//switch statements can be allowed to fall through, see link
 				//https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html
