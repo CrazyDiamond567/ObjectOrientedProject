@@ -8,10 +8,9 @@ public class Controller {
 			
 		switch (inputArray[0]) {
 			case "help":
-				System.out.println("You have Selected Help: " + '\n'
-	    			+ "--> For More Information - Type 'info' " + '\n'
-	    			+ "--> To Quit - Type 'quit'"
-	    			);
+				System.out.println("Command List: \n" +
+						"move or m: moves the player in the specified direction \n" +
+						"talk or t: talk to the target npc");
 				break;
 			case "info":
 				System.out.println("Adventure Game");
@@ -31,6 +30,8 @@ public class Controller {
 				System.out.println("you have quit the game");
 				System.exit(0);
 				// quit program
+			default:
+				System.out.println("type help for commands");
 		}
 	}
 		
