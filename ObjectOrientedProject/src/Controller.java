@@ -2,18 +2,23 @@ import java.util.*;
 
 public class Controller {
 		
-	public void parseInput(String input, Map map) {
+	public void parseInput(String input, Map map, Helper helper) {
+		
+		if (input.equals("help")) {
+			System.out.println("Commands: move, talk");
+		}
+		else {
+		
 		String[] inputArray = input.split(" ");
 		boolean result = true;
 			
 		switch (inputArray[0]) {
 			case "help":
-				System.out.println("Command List: \n" +
-						"move or m: moves the player in the specified direction \n" +
-						"talk or t: talk to the target npc");
+				helper.handleHelp(inputArray[1]);
 				break;
 			case "info":
 				System.out.println("Adventure Game");
+				break;
 			case "move":
 				//switch statements can be allowed to fall through, see link
 				//https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html
@@ -32,6 +37,7 @@ public class Controller {
 				// quit program
 			default:
 				System.out.println("type help for commands");
+		}
 		}
 	}
 		

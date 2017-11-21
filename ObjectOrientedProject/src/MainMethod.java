@@ -45,11 +45,15 @@ public class MainMethod {
 		boolean running = true;
 		
 		//game loop
+		Helper helper = new Helper();
+		
+		System.out.println("This is an incomplete game. You can move around and talk to an NPC. Type 'help' for a list of commands");
+		
 		while (running) {
 			System.out.print("input > ");
 			input = reader.nextLine();
 			if (input != "") {
-				controller.parseInput(input, map);
+				controller.parseInput(input, map, helper);
 				input = "";
 			}
 		}
