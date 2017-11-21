@@ -41,7 +41,7 @@ public class Map {
 	}
 	public void moveNorth() {
 		if (currentLocation[1] == 99) {
-			System.out.println("you cannot go that way");
+			System.out.println("You cannot go that way!");
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]+1][currentLocation[2]] != null) {
@@ -50,13 +50,13 @@ public class Map {
 				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 			}
 			else {
-				System.out.println("you cannot go that way");
+				System.out.println("You cannot go that way!");
 			}
 		}
 	}
 	public void moveSouth() {
 		if (currentLocation[1] == 0) {
-			System.out.println("you cannot go that way");
+			System.out.println("You cannot go that way!");
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]-1][currentLocation[2]] != null) {
@@ -65,13 +65,13 @@ public class Map {
 				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 			}
 			else {
-				System.out.println("you cannot go that way");
+				System.out.println("You cannot go that way!");
 			}
 		}
 	}
 	public void moveEast() {
 		if (currentLocation[0] == 99) {
-			System.out.println("you cannot go that way");
+			System.out.println("You cannot go that way!");
 		}
 		else {
 			if (worldspace[currentLocation[0]+1][currentLocation[1]][currentLocation[2]] != null) {
@@ -80,13 +80,13 @@ public class Map {
 				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 			}
 			else {
-				System.out.println("you cannot go that way");
+				System.out.println("You cannot go that way!");
 			}
 		}
 	}
 	public void moveWest() {
 		if (currentLocation[0] == 0) {
-			System.out.println("you cannot go that way");
+			System.out.println("You cannot go that way!");
 		}
 		else {
 			if (worldspace[currentLocation[0]-1][currentLocation[1]][currentLocation[2]] != null) {
@@ -95,13 +95,13 @@ public class Map {
 				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 			}
 			else {
-				System.out.println("you cannot go that way");
+				System.out.println("You cannot go that way!");
 			}
 		}
 	}
 	public void moveDown() {
 		if (currentLocation[2] == 0) {
-			System.out.println("you cannot go that way");
+			System.out.println("You cannot go that way!");
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]-1] != null) {
@@ -110,14 +110,14 @@ public class Map {
 				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 			}
 			else {
-				System.out.println("you cannot go that way");
+				System.out.println("You cannot go that way!");
 			}
 		}
 		
 	}
 	public void moveUp() {
 		if (currentLocation[2] == 4) {
-			System.out.println("you cannot go that way");
+			System.out.println("You cannot go that way!");
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]+1] != null) {
@@ -126,7 +126,7 @@ public class Map {
 				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 			}
 			else {
-				System.out.println("you cannot go that way");
+				System.out.println("You cannot go that way!");
 			}
 		}
 	}

@@ -47,8 +47,8 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	    	System.out.print("input > ");
 	    	
 	    	String input = reader.nextLine();
-	    	if ("exit".equals(input)) {
-	    		System.out.println("You have exited the conversation");
+	    	if ("bye".equals(input)) {
+	    		System.out.println("You have exited the conversation.");
 	    		throw new IOException("");
 	    	}
 	    	if ('0' == input.charAt(0)) {
@@ -56,7 +56,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	    			start(CurrentNode.parent);
 	    		}
 	    		else {
-	    			System.out.println("You are already at the root of the conversation\n");
+	    			System.out.println("You are already at the root of the conversation.\n");
 	    			start(CurrentNode);
 	    		}
 	    	}
@@ -69,7 +69,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 		    	}
 	    	}
 	    	
-	    	System.out.println("You didn't enter a valid number\n");
+	    	System.out.println("You didn't enter a valid number!\n");
 	    	start(CurrentNode);
 	    }
 	    

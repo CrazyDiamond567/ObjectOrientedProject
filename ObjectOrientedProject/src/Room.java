@@ -24,7 +24,7 @@ public class Room {
 			npc.startConversation();
 		}
 		else {
-			System.out.println("You don't see anybody with that name in this room");
+			System.out.println("You don't see anybody with that name in this room.");
 		}
 	}
 	
