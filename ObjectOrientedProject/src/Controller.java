@@ -2,21 +2,33 @@ import java.util.*;
 
 public class Controller {
 		
-	public void parseInput(String input, Map map, Helper helper) {
-		String[] inputArray = input.split(" ");
-		boolean result = true;
-			
-		switch (inputArray[0]) {
+	public int parseInput(String input, Map map, Helper helper) {
+		//single word parser
+		switch (input) {
 			case "help":
 				System.out.println("Command List: \n" +
-						"move or m: Moves the player in the specified direction. Example: \"move north or \"m n\". \n" +
-						"talk or t: Talks to the target NPC. Example: \"talk bob\" or \"t bob\". \n" +
-						"bye: Exits the conversation.");
-				break;
+					"move or m: Moves the player in the specified direction. Example: \"move north or \"m n\". \n" +
+					"talk or t: Talks to the target NPC. Example: \"talk bob\" or \"t bob\". \n" +
+					"exit: Exits the conversation.");
+				return 0;
+				
+			case "quit":
+				System.out.println("You have quit the game.");
+				System.exit(0);
+				// quit program
 			case "info":
 				System.out.println("The Ineptitude \n" +
 						"Created by: \n" +
 						"Omeed Ghafari, Arias Talari, Vitali Taranto");
+				return 0;
+		}
+		
+		String[] inputArray = input.split(" ");
+		
+		//double word parser
+		switch (inputArray[0]) {
+			case "help":
+				helper.handleHelp(inputArray[1]);
 				break;
 			case "move":
 				//switch statements can be allowed to fall through, see link
@@ -30,13 +42,11 @@ public class Controller {
 				Room room = map.returnCurrentRoom();
 				room.handleTalk(inputArray[1]);
 				break;
-			case "quit":
-				System.out.println("You have quit the game.");
-				System.exit(0);
-				// quit program
 			default:
 				System.out.println("Type help for commands.");
 		}
+		
+		return 0;
 	}
 		
 }
