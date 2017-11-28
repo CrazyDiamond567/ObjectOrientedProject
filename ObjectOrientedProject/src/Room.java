@@ -4,6 +4,7 @@ public class Room {
 	public String name = null;
 	public String description = null;
 	public ArrayList<NPC> npcList = new ArrayList<NPC>();
+	public Inventory roomInventory = new Inventory();
 	
 	public Room(String n, String d) {
 		name = n;

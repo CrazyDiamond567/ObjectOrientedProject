@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Controller {
 		
-	public int parseInput(String input, Map map, Helper helper) {
+	public int parseInput(String input, Map map, Helper helper, Inventory playerInventory) {
 		//single word parser
 		//I am being sure to return 0 so I never reach the second switch if any of these cases are true. Messy, but it works.
 		switch (input) {
@@ -16,11 +16,13 @@ public class Controller {
 			case "look":
 				map.handleLook();
 				return 0;
+				
 			case "info":
 				System.out.println("The Ineptitude \n" +
 						"Created by: \n" +
 						"Omeed Ghafari, Arias Talari, Vitali Taranto");
 				return 0;
+				
 			case "quit":
 				System.out.println("You have quit the game.");
 				System.exit(0);
@@ -45,6 +47,49 @@ public class Controller {
 			case "t":
 				Room room = map.returnCurrentRoom();
 				room.handleTalk(inputArray[1]);
+				break;
+			case "check":
+			case "c":
+				if (inputArray[1].equals("inventory")) {
+					System.out.println("ruffling through your pockets, you see a...");
+					playerInventory.listItems();
+					break;
+				}
+				else if (inputArray[1].equals("room")) {
+					System.out.println("carefully checking the room, you see a...");
+					map.handleCheck();
+					break;
+				}
+				else {
+					System.out.println("check can take 'inventory' or 'room' as an argument");
+					break;
+				}
+			case "inspect":
+			case "i":
+				String tempdescription = map.handleInspect(inputArray[1]);
+				if (tempdescription.equals("")) {
+					tempdescription = playerInventory.handleInspect(inputArray[1]);
+				}
+				if (tempdescription.equals("")) {
+					System.out.println("No such item in room or inventory");
+				}
+				else {
+					System.out.println(tempdescription);
+				}
+				break;
+			case "drop":
+			case "d":
+				Item tempitem = playerInventory.removeItemFromInventory(inputArray[1]);
+				if (tempitem != null) {
+					map.handleDrop(tempitem);
+				}
+				break;
+			case "pickup":
+			case "p":
+				Item tempitem2 = map.handlePickup(inputArray[1]);
+				if (tempitem2 != null) {
+					playerInventory.addItemToInventory(tempitem2);
+				}
 				break;
 			default:
 				System.out.println("Type help for commands.");

@@ -15,7 +15,18 @@ public class Map {
 		System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
 		System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
 	}
-	
+	public void handleCheck() {
+		worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].roomInventory.listItems();
+	}
+	public void handleDrop(Item tempitem) {
+		worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].roomInventory.addItemToInventory(tempitem);
+	}
+	public Item handlePickup(String name) {
+		return worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].roomInventory.removeItemFromInventory(name);
+	}
+	public String handleInspect(String name) {
+		return worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].roomInventory.handleInspect(name);
+	}
 	public void handleMovement(String direction) {
 		switch (direction) {
 			case "north":

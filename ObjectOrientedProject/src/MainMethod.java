@@ -9,12 +9,16 @@ public class MainMethod {
 		Controller controller = new Controller();
 		Map map = new Map();
 		Helper helper = new Helper();
+		Inventory playerInventory = new Inventory();
 		
 		//input variable
 		String input = "";
 		
 		//setup rooms
 		setupRooms(map);
+		
+		//give player starting items
+		startingInventory(playerInventory);
 		
 		//starting text
 		System.out.println("This is an incomplete game. You can move around and talk to an NPC. Type 'help' for a list of commands.");
@@ -23,14 +27,14 @@ public class MainMethod {
 			System.out.print("input > ");
 			input = reader.nextLine();
 			if (input != "") {
-				controller.parseInput(input, map, helper);
+				controller.parseInput(input, map, helper, playerInventory);
 				input = "";
 			}
 		}
 	}
 	
 	
-	//funtion to seperate out some of the setup work and clean up the code
+	//function to separate out some of the setup work and clean up the code
 	public static void setupRooms(Map map) {
 		//example rooms
 		Room room1 = new Room("School Entrance","entrance of school, to the north is the Main Hallway.");
@@ -60,6 +64,12 @@ public class MainMethod {
 				
 		//add npc to room
 		room1.addNPCToRoom(npc1);
+	}
+	
+	public static void startingInventory(Inventory playerInventory) {
+		Item flyer = new Item("flyer","This is an example item!");
+		
+		playerInventory.addItemToInventory(flyer);
 	}
 
 }
