@@ -4,6 +4,7 @@ public class Controller {
 		
 	public int parseInput(String input, Map map, Helper helper) {
 		//single word parser
+		//I am being sure to return 0 so I never reach the second switch if any of these cases are true. Messy, but it works.
 		switch (input) {
 			case "help":
 				System.out.println("Command List: \n" +
@@ -12,15 +13,18 @@ public class Controller {
 					"exit: Exits the conversation.");
 				return 0;
 				
-			case "quit":
-				System.out.println("You have quit the game.");
-				System.exit(0);
-				// quit program
+			case "look":
+				map.handleLook();
+				return 0;
 			case "info":
 				System.out.println("The Ineptitude \n" +
 						"Created by: \n" +
 						"Omeed Ghafari, Arias Talari, Vitali Taranto");
 				return 0;
+			case "quit":
+				System.out.println("You have quit the game.");
+				System.exit(0);
+				// quit program
 		}
 		
 		String[] inputArray = input.split(" ");

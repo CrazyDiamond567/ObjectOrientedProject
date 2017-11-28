@@ -11,6 +11,11 @@ public class Map {
 	public Room returnCurrentRoom() {
 		return worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]];
 	}
+	public void handleLook() {
+		System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+		System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+	}
+	
 	public void handleMovement(String direction) {
 		switch (direction) {
 			case "north":
