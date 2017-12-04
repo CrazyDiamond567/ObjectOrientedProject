@@ -37,23 +37,24 @@ public class MainMethod {
 	//function to separate out some of the setup work and clean up the code
 	public static void setupRooms(Map map) {
 		//example rooms
-		Room room1 = new Room("School Entrance","entrance of school, to the north is the Main Hallway.");
-		map.addRoomToMap(room1, 50, 0, 0);
+		Room schoolEntrance = new Room("School Entrance","entrance of school, to the north is the Main Hallway.");
+		map.addRoomToMap(schoolEntrance, 50, 0, 0);
 			
-		Room room2 = new Room("Main Hallway","Main Hallway, to the north is a Stairwell, to the south is the School Entrance, to the west is the Main Reception, to the east is a Library.");
-		map.addRoomToMap(room2, 50, 1, 0);
-			
-		Room room3 = new Room("Stairwell(Level 0)","This is Level 0 of a Stairwell, to the south is the Main Hallway, the Stairwell continues up.");
-		map.addRoomToMap(room3, 50, 2, 0);
+		Room reception = new Room("Front Reception","This is the front reception of the school");
+		map.addRoomToMap(reception, 50, 1, 0);
 		
-		Room room4 = new Room("Main Reception","Go East");
-		map.addRoomToMap(room4, 49, 1, 0);
+		Room hall1DSection1 = new Room("Hall 1D (Section 1)", "You are in Hall 1D");
+		map.addRoomToMap(hall1DSection1, 50, 2, 0);
 		
-		Room room5 = new Room("Library","Go West");
-		map.addRoomToMap(room5, 51, 1, 0);
+		Room hall1DSection2 = new Room("Hall 1D (Section 2)", "You are in Hall 1D");
+		map.addRoomToMap(hall1DSection2, 50, 3, 0);
 		
-		Room room6 = new Room("Stairwell(Level 1)","Go Down");
-		map.addRoomToMap(room6, 50, 2, 1);
+		Room hall1DSection3 = new Room("Hall 1D (Section 3)", "You are in Hall 1D");
+		map.addRoomToMap(hall1DSection3, 50, 4, 0);
+		
+		Room hall1DSection4 = new Room("Hall 1D (Section 4)", "You are in Hall 1D");
+		map.addRoomToMap(hall1DSection4, 50, 5, 0);
+		
 		
 		//example conversation
 		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob and I am an example NPC!");
@@ -63,7 +64,7 @@ public class MainMethod {
 		NPC npc1 = new NPC("bob", conversation1);
 				
 		//add npc to room
-		room1.addNPCToRoom(npc1);
+		schoolEntrance.addNPCToRoom(npc1);
 	}
 	
 	public static void startingInventory(Inventory playerInventory) {
