@@ -158,9 +158,10 @@ public class MainMethod {
 	}
 	
 	public static void startingInventory(Inventory playerInventory) {
-		Item flyer = new Item("flyer","This is an example item!");
 		
-		playerInventory.addItemToInventory(flyer);
+		int[] KeyArray1D2 = {50,3,0};
+		Key key1D2 = new Key("1D2Key","This unlocks room 1D2", KeyArray1D2, "west");
+		playerInventory.addItemToInventory(key1D2);
 	}
 
 }

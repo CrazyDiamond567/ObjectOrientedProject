@@ -7,4 +7,8 @@ public class Item {
 		name = n;
 		description = d;
 	}
+	
+	public void use(Map map) {
+		System.out.println("You can't see how this item would be used");
+	}
 }

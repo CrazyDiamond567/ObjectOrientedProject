@@ -26,7 +26,6 @@ public class Room {
 	}
 	
 	public void handleTalk(String npcName) {
-		//left off here
 		NPC npc = searchRoomForNPC(npcName);
 		if (npc != null) {
 			npc.startConversation();

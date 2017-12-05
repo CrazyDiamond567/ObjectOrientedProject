@@ -35,4 +35,13 @@ public class Inventory {
 		}
 		return "";
 	}
+	
+	public void handleUse(String name, Map map) {
+		for(int i = 0; i < itemList.size(); i++) {
+			if (itemList.get(i).name.equals(name)) {
+				Item tempitem = itemList.get(i);
+				tempitem.use(map);
+			}
+		}
+	}
 }

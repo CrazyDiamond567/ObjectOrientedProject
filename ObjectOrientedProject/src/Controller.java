@@ -99,6 +99,10 @@ public class Controller {
 					playerInventory.addItemToInventory(tempitem2);
 				}
 				break;
+			case "use":
+			case "u":
+				playerInventory.handleUse(inputArray[1], map);
+				break;
 			default:
 				System.out.println("Type help for commands.");
 		}
