@@ -23,7 +23,6 @@ public class Controller {
 						"Omeed Ghafari, Arias Talari, Vitali Taranto");
 				return 0;
 			
-			//threads are weird.
 			case "stop music":
 				t1.suspend();
 				return 0;

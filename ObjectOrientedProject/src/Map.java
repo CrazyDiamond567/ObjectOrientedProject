@@ -61,9 +61,14 @@ public class Map {
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]+1][currentLocation[2]] != null) {
-				currentLocation[1] = currentLocation[1]+1;
-				System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
-				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].northBlocker == "") {
+					currentLocation[1] = currentLocation[1]+1;
+					System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+					System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				}
+				else {
+					System.out.println(worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].northBlocker);
+				}
 			}
 			else {
 				System.out.println("You cannot go that way!");
@@ -76,9 +81,14 @@ public class Map {
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]-1][currentLocation[2]] != null) {
-				currentLocation[1] = currentLocation[1]-1;
-				System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
-				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].southBlocker == "") {
+					currentLocation[1] = currentLocation[1]-1;
+					System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+					System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				}
+				else {
+					System.out.println(worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].southBlocker);
+				}
 			}
 			else {
 				System.out.println("You cannot go that way!");
@@ -91,9 +101,14 @@ public class Map {
 		}
 		else {
 			if (worldspace[currentLocation[0]+1][currentLocation[1]][currentLocation[2]] != null) {
-				currentLocation[0] = currentLocation[0]+1;
-				System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
-				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].eastBlocker == "") {
+					currentLocation[0] = currentLocation[0]+1;
+					System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+					System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				}
+				else {
+					System.out.println(worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].eastBlocker);
+				}
 			}
 			else {
 				System.out.println("You cannot go that way!");
@@ -106,9 +121,14 @@ public class Map {
 		}
 		else {
 			if (worldspace[currentLocation[0]-1][currentLocation[1]][currentLocation[2]] != null) {
-				currentLocation[0] = currentLocation[0]-1;
-				System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
-				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].westBlocker == "") {
+					currentLocation[0] = currentLocation[0]-1;
+					System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+					System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				}
+				else {
+					System.out.println(worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].westBlocker);
+				}
 			}
 			else {
 				System.out.println("You cannot go that way!");
@@ -121,9 +141,14 @@ public class Map {
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]-1] != null) {
-				currentLocation[2] = currentLocation[2]-1;
-				System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
-				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].downBlocker == "") {
+					currentLocation[2] = currentLocation[2]-1;
+					System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+					System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				}
+				else {
+					System.out.println(worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].downBlocker);
+				}
 			}
 			else {
 				System.out.println("You cannot go that way!");
@@ -137,9 +162,14 @@ public class Map {
 		}
 		else {
 			if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]+1] != null) {
-				currentLocation[2] = currentLocation[2]+1;
-				System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
-				System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				if (worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].upBlocker == "") {
+					currentLocation[2] = currentLocation[2]+1;
+					System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
+					System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);
+				}
+				else {
+					System.out.println(worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].upBlocker);
+				}
 			}
 			else {
 				System.out.println("You cannot go that way!");

@@ -1,4 +1,4 @@
-// taken from here, slightly modified
+// taken from here, slightly modified to allow for looping
 // https://stackoverflow.com/questions/17056169/playing-a-music-file-in-a-java-program#17056232
 
 import javax.sound.sampled.*;

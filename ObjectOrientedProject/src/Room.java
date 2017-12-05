@@ -6,6 +6,13 @@ public class Room {
 	public ArrayList<NPC> npcList = new ArrayList<NPC>();
 	public Inventory roomInventory = new Inventory();
 	
+	public String northBlocker = "";
+	public String southBlocker = "";
+	public String westBlocker = "";
+	public String eastBlocker = "";
+	public String upBlocker = "";
+	public String downBlocker = "";
+	
 	public Room(String n, String d) {
 		name = n;
 		description = d;
