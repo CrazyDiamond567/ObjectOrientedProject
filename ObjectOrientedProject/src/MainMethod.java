@@ -48,7 +48,16 @@ public class MainMethod {
 		
 		
 		//Starting rooms
+		
+		//first you create the room. The first argument is the name, the second argument is the description. Make sure to note which ways you can go.
 		Room schoolEntrance = new Room("School Entrance","entrance of school, to the north is the front reception");
+		
+		//This adds the room to the map. The first argument is the room you will be adding,
+		//The coordinate system is column, row, "floor"
+		//to go north, increase the second number; to go south, decrease the second number.
+		//to go east, increase the first number; to go west, decrease the first number.
+		//to go up, increase the third number to 2; to go down, decrease the third number to 0.
+		//The first floor is 0 for the third number, the second floor is 2 for the third number.
 		map.addRoomToMap(schoolEntrance, 50, 0, 0);
 			
 		Room reception = new Room("Front Reception","This is the front reception of the school, to the north is Hallway 1D, to the east is Hallway 1A");
@@ -74,8 +83,12 @@ public class MainMethod {
 		Room hall1DSection3 = new Room("Hall 1D (Section 3)", "You are in Hall 1D, it continues to the north and south");
 		map.addRoomToMap(hall1DSection3, 50, 4, 0);
 		
-		Room hall1DSection4 = new Room("Hall 1D (Section 4)", "You are in Hall 1D, it continues to the north and south");
+		Room hall1DSection4 = new Room("Hall 1D (Section 4)", "You are in Hall 1D, it continues to the north and south, to the west is classroom 1D4");
 		map.addRoomToMap(hall1DSection4, 50, 5, 0);
+		
+		Room classroom1D4 = new Room("Classroom 1D4", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The east exit leads to hall 1D");
+		map.addRoomToMap(classroom1D4, 49, 5, 0);
 		
 		Room hall1DSection5 = new Room("Hall 1D (Section 5)", "You are in Hall 1D, it continues to the north and south");
 		map.addRoomToMap(hall1DSection5, 50, 6, 0);
