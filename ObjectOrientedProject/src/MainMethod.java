@@ -5,6 +5,14 @@ public class MainMethod {
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
 		
+        //background music
+        Thread t1 = new Thread(new Runnable() {
+            public void run() {
+            	Jukebox background_music = new Jukebox("Ave_Marimba.wav");
+            }});  
+        t1.start();
+        
+		
 		//initialize needed objects
 		Controller controller = new Controller();
 		Map map = new Map();
@@ -27,7 +35,7 @@ public class MainMethod {
 			System.out.print("input > ");
 			input = reader.nextLine();
 			if (input != "") {
-				controller.parseInput(input, map, helper, playerInventory);
+				controller.parseInput(input, map, helper, playerInventory, t1);
 				input = "";
 			}
 		}
@@ -37,10 +45,10 @@ public class MainMethod {
 	//function to separate out some of the setup work and clean up the code
 	public static void setupRooms(Map map) {
 		//example rooms
-		Room schoolEntrance = new Room("School Entrance","entrance of school, to the north is the Main Hallway.");
+		Room schoolEntrance = new Room("School Entrance","entrance of school, to the north is the front reception");
 		map.addRoomToMap(schoolEntrance, 50, 0, 0);
 			
-		Room reception = new Room("Front Reception","This is the front reception of the school");
+		Room reception = new Room("Front Reception","This is the front reception of the school, to the north is Hallway 1D, to the west is Hallway 1A");
 		map.addRoomToMap(reception, 50, 1, 0);
 		
 		Room hall1DSection1 = new Room("Hall 1D (Section 1)", "You are in Hall 1D");

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Controller {
 		
-	public int parseInput(String input, Map map, Helper helper, Inventory playerInventory) {
+	public int parseInput(String input, Map map, Helper helper, Inventory playerInventory, Thread t1) {
 		//single word parser
 		//I am being sure to return 0 so I never reach the second switch if any of these cases are true. Messy, but it works.
 		switch (input) {
@@ -21,6 +21,15 @@ public class Controller {
 				System.out.println("The Ineptitude \n" +
 						"Created by: \n" +
 						"Omeed Ghafari, Arias Talari, Vitali Taranto");
+				return 0;
+			
+			//threads are weird.
+			case "stop music":
+				t1.suspend();
+				return 0;
+				
+			case "resume music":
+				t1.resume();
 				return 0;
 				
 			case "quit":
