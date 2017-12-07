@@ -109,6 +109,11 @@ public class MainMethod {
 		Room hall1CSection3 = new Room("Hall 1C (Section 3)", "You are in Hall 1C, it continues to the west and east");
 		map.addRoomToMap(hall1CSection3, 53, 7, 0);
 		
+		// Add this for Vitali to review 
+		Room classroom1C3 = new Room("Classroom 1C3", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The north exit leads to hall 1C");
+		map.addRoomToMap(classroom1C3, 53, 7, 0);
+		
 		Room hall1CSection4 = new Room("Hall 1C (Section 4)", "You are in Hall 1C, it continues to the west and east");
 		map.addRoomToMap(hall1CSection4, 54, 7, 0);
 		
@@ -152,6 +157,12 @@ public class MainMethod {
 		
 		Room hall1ASection3 = new Room("Hall 1A (Section 3)", "You are in Hall 1A, it continues to the west and east");
 		map.addRoomToMap(hall1ASection3, 53, 1, 0);
+		
+		// Vitali to review 
+		
+		Room classroom1A3 = new Room("Classroom 1A3", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The south exit leads to hall 1A");
+		map.addRoomToMap(classroom1A3, 53, 1, 0);
 		
 		Room hall1ASection2 = new Room("Hall 1A (Section 2)", "You are in Hall 1A, it continues to the west and east");
 		map.addRoomToMap(hall1ASection2, 52, 1, 0);
