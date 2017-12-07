@@ -158,7 +158,7 @@ public class MainMethod {
 		Room hall1ASection3 = new Room("Hall 1A (Section 3)", "You are in Hall 1A, it continues to the west and east");
 		map.addRoomToMap(hall1ASection3, 53, 1, 0);
 		
-		// Vitali to review 
+		// Vitali to review. 
 		
 		Room classroom1A3 = new Room("Classroom 1A3", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
 				+ " You sense you are in the wrong classroom. The south exit leads to hall 1A");
