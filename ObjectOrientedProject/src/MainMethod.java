@@ -245,6 +245,123 @@ public class MainMethod {
 		Room hall2BSection1 = new Room("Hall 2B (Section 1)", "You are in Hall 2B, it continues to the north and south, to the west is the Teacher's Lounge");
 		map.addRoomToMap(hall2BSection1, 56, 2, 2);
 		
+		//Hall 2C
+		Room hall2CSection5 = new Room("Hall 2C (Section 5)", "You are in Hall 2C, it continues to the west and east, to the south is classroom 2C5B5");
+		map.addRoomToMap(hall2CSection5, 55, 7, 2);
+		
+		Room classroom2C5B5 = new Room("Classroom 2C5B5", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The north exit leads to hall 2C");
+		map.addRoomToMap(classroom2C5B5, 55, 6, 2);
+		
+		Room hall2CSection4 = new Room("Hall 2C (Section 4)", "You are in Hall 2C, it continues to the west and east, to the north is women's bathroom");
+		map.addRoomToMap(hall2CSection4, 54, 7, 2);
+		
+		//women's bathroom
+		Room womenbathroomfloor2 = new Room("Women's Bathroom","This is the Women's Bathroom for the students, To the south is Hallway 2C");
+		map.addRoomToMap(womenbathroomfloor2, 54, 8, 2);
+		
+		Room hall2CSection3 = new Room("Hall 2C (Section 3)", "You are in Hall 2C, it continues to the west and east, to the south is classroom 2C3");
+		map.addRoomToMap(hall2CSection3, 53, 7, 2);
+		
+		//Classroom 2C3
+		Room classroom2C3 = new Room("Classroom 2C3", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The north exit leads to hall 2C");
+		map.addRoomToMap(classroom2C3, 53, 6, 2);
+	
+		Room hall2CSection2 = new Room("Hall 2C (Section 2)", "You are in Hall 2C, it continues to the west and east, to the north is men's bathroom");
+		map.addRoomToMap(hall2CSection2, 52, 7, 2);
+		
+		//men's bathroom
+		Room menbathroomfloor2 = new Room("Men's Bathroom","This is the men's Bathroom for the students, To the south is Hallway 2C");
+		map.addRoomToMap(menbathroomfloor2, 52, 8, 2);
+		
+		Room hall2CSection1 = new Room("Hall 2C (Section 1)", "You are in Hall 2C, it continues to the west and east, to the south is the library");
+		map.addRoomToMap(hall2CSection1, 51, 7, 2);
+		
+		//library
+		Room library = new Room("Library","This is the library for the students, To the north is Hallway 2C");
+		map.addRoomToMap(library, 51, 6, 2);
+		
+		//Hall 2D 2C Intersection
+		Room hall2D2CIntersection = new Room("Hall 2D 2C Intersection", "This is the intersection of two hallways, 2D to the south and 2C to the east");
+		map.addRoomToMap(hall2D2CIntersection, 50, 7, 2);
+		
+		//Hall 2D
+		
+		Room hall2DSection5 = new Room("Hall 2D (Section 5)", "You are in Hall 2D, it continues to the south and north, to the north is Hall 2D 2C Intersection");
+		map.addRoomToMap(hall2DSection5, 50, 6, 2);
+		
+		Room hall2DSection4 = new Room("Hall 2D (Section 4)", "You are in Hall 2D, it continues to the south and north, to the west is classroom 2D4");
+		map.addRoomToMap(hall2DSection4, 50, 5, 2);
+		
+		//Classroom 2D4
+		Room classroom2D4 = new Room("Classroom 2D4", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The east exit leads to hall 2D");
+		map.addRoomToMap(classroom2D4, 49, 5, 2);
+		
+		Room hall2DSection3 = new Room("Hall 2D (Section 3)", "You are in Hall 2D, it continues to the south and north, to the north is hall 2D");
+		map.addRoomToMap(hall2DSection3, 50, 4, 2);
+		
+		Room hall2DSection2 = new Room("Hall 2D (Section 2)", "You are in Hall 2D, it continues to the south and north, to the west is classroom 2D2");
+		map.addRoomToMap(hall2DSection2, 50, 3, 2);
+		
+		//Classroom 2D2
+		Room classroom2D2 = new Room("Classroom 2D2", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The east exit leads to hall 2D");
+		map.addRoomToMap(classroom2D2, 49, 3, 2);
+		
+		Room hall2DSection1 = new Room("Hall 2D (Section 1)", "You are in Hall 2D, it continues to the south and north, to the north is hall 2D");
+		map.addRoomToMap(hall2DSection1, 50, 2, 2);
+		
+		//Hall 2A 2D Intersection
+		Room hall2A2DIntersection = new Room("Hall 2A 2D Intersection", "This is the intersection of two hallways, 2D to the north and 2A to the east");
+		map.addRoomToMap(hall2A2DIntersection, 50, 1, 2);
+		
+		//Hall 2A
+		Room hall2ASection1 = new Room("Hall 2A (Section 1)", "You are in Hall 2A, it continues to the east and south, to the west is Hall 2A 2D Intersection");
+		map.addRoomToMap(hall2ASection1, 51, 1, 2);
+		
+		//Classroom 2A1D1
+		Room classroom2A1D1 = new Room("Classroom 2A1D1", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The south exit leads to hall 2A");
+		map.addRoomToMap(classroom2A1D1, 51, 2, 2);
+		
+		Room hall2ASection2 = new Room("Hall 2A (Section 2)", "You are in Hall 2A, it continues to the east and south, to the east is Hall 2A");
+		map.addRoomToMap(hall2ASection2, 52, 1, 2);
+		
+		//Classroom 2A2
+		Room classroom2A2 = new Room("Classroom 2A2", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The north exit leads to hall 2A");
+		map.addRoomToMap(classroom2A2, 52, 0, 2);
+		
+		Room hall2ASection3 = new Room("Hall 2A (Section 3)", "You are in Hall 2A, it continues to the east and south, to the north is classroom 2A3");
+		map.addRoomToMap(hall2ASection3, 53, 1, 2);
+		
+		//Classroom 2A3
+		Room classroom2A3 = new Room("Classroom 2A3", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The south exit leads to hall 2A");
+		map.addRoomToMap(classroom2A3, 53, 2, 2);
+		
+		Room hall2ASection4 = new Room("Hall 2A (Section 4)", "You are in Hall 2A, it continues to the east and south, to the south is classroom 2A4");
+		map.addRoomToMap(hall2ASection4, 54, 1, 2);
+		
+		//Classroom 2A4
+		Room classroom2A4 = new Room("Classroom 2A4", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
+				+ " You sense you are in the wrong classroom. The north exit leads to hall 2A");
+		map.addRoomToMap(classroom2A4, 54, 0, 2);
+		
+		Room hall2ASection5 = new Room("Hall 2A (Section 5)", "You are in Hall 2A, it continues to the east and south, to the north is teacher's lounge");
+		map.addRoomToMap(hall2ASection5, 55, 1, 2);
+		
+		//Hall 2A 2B Intersection
+		Room hall2A2Bintersection = new Room("Hall 2A 2B Intersection", "This is the intersection of two hallways, 2B to the north and 2A to the west");
+		map.addRoomToMap(hall2A2Bintersection, 56, 1, 2);
+		
+		//Teacher's Lounge
+		Room teacherslounge = new Room("Teacher's Lounge","This is the Teacher's Lounge for the students, To the south is Hallway 2A");
+		map.addRoomToMap(teacherslounge, 55, 2, 2);
+		
+		
 		
 		//example conversation
 		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob and I am an example NPC!");
