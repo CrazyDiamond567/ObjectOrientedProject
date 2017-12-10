@@ -32,10 +32,10 @@ public class Room {
 		System.out.println();
 	}
 	
-	public void handleTalk(String npcName) {
+	public void handleTalk(String npcName, Inventory playerInventory) {
 		NPC npc = searchRoomForNPC(npcName);
 		if (npc != null) {
-			npc.startConversation();
+			npc.startConversation(playerInventory);
 		}
 		else {
 			System.out.println("You don't see anybody with that name in this room.");

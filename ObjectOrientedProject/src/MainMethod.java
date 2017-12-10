@@ -361,12 +361,18 @@ public class MainMethod {
 		Room teacherslounge = new Room("Teacher's Lounge","This is the Teacher's Lounge for the students, To the south is Hallway 2A");
 		map.addRoomToMap(teacherslounge, 55, 2, 2);
 		
-		
+		//Example item
+		int[] KeyArray1D2 = {50,3,0};
+		Key key1D2 = new Key("1D2Key","This unlocks room 1D2", KeyArray1D2, "west");
 		
 		//example conversation
 		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob and I am an example NPC!");
-		Conversation.Node node1 = conversation1.root.addOption("1. How do you feel?", "node1", "Nothing, as I am a soulless NPC.");
-				
+		Conversation.Node node1 = conversation1.root.addOption("1. Here, have $100 dollars! (Give $100 dollars)", "node1", "You don't have enough money!");
+		node1.itemToGive = key1D2;
+		node1.nameOfItemToTake = "$50";
+		node1.NumTakeItems = 2;
+		node1.textIfTradeHappened = "here, have a key!";
+		
 		//example npc
 		NPC npc1 = new NPC("bob", conversation1);
 				
@@ -374,11 +380,11 @@ public class MainMethod {
 		schoolEntrance.addNPCToRoom(npc1);
 	}
 	
-	public static void startingInventory(Inventory playerInventory) {
+	public static void startingInventory(Inventory playerInventory) {		
 		
-		int[] KeyArray1D2 = {50,3,0};
-		Key key1D2 = new Key("1D2Key","This unlocks room 1D2", KeyArray1D2, "west");
-		playerInventory.addItemToInventory(key1D2);
+		Item cash50 = new Item("$50","This is $50 in cold hard cash. Might come in handy.");
+		playerInventory.addItemToInventory(cash50);
+		playerInventory.addItemToInventory(cash50);
 	}
 
 }

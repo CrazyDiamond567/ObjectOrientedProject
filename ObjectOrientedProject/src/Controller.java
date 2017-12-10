@@ -54,7 +54,7 @@ public class Controller {
 			case "talk":
 			case "t":
 				Room room = map.returnCurrentRoom();
-				room.handleTalk(inputArray[1]);
+				room.handleTalk(inputArray[1], playerInventory);
 				break;
 			case "check":
 			case "c":
@@ -90,6 +90,9 @@ public class Controller {
 				Item tempitem = playerInventory.removeItemFromInventory(inputArray[1]);
 				if (tempitem != null) {
 					map.handleDrop(tempitem);
+				}
+				else {
+					System.out.println("you don't see an item by that name");
 				}
 				break;
 			case "pickup":

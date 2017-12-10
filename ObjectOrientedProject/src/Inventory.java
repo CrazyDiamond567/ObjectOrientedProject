@@ -17,7 +17,6 @@ public class Inventory {
 				return removedItem;
 			}
 		}
-		System.out.println("you don't see an item by that name");
 		return null;
 	}
 	public void listItems() {
