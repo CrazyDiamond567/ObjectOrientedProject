@@ -365,7 +365,7 @@ public class MainMethod {
 		int[] KeyArray1D2 = {50,3,0};
 		Key key1D2 = new Key("1D2Key","This unlocks room 1D2", KeyArray1D2, "west");
 		
-		//example conversation
+		//example conversation, delete once game is done
 		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob and I am an example NPC!");
 		Conversation.Node node1 = conversation1.root.addOption("1. Here, have $100 dollars! (Give $100 dollars)", "node1", "");
 		
@@ -374,7 +374,13 @@ public class MainMethod {
 		node1.itemToGive = key1D2;
 		node1.textIfTradeHappened = "here, have a key! and I unblocked the door!";
 		node1.unblockDirection = "north";
+		node1.nameOfNPCToDelete = "bob";
+		node1.leaveText = "I am going away, goodbye";
 		
+		Conversation.Node node2 = conversation1.root.addOption("2. I hate your guts!", "node2", "");
+		node2.loseGame = true;
+		node2.loseText = "bob thinks you out of existence. Reality Warping is broken";
+				
 		//example npc
 		NPC npc1 = new NPC("bob", conversation1);
 				
@@ -385,6 +391,8 @@ public class MainMethod {
 	public static void startingInventory(Inventory playerInventory) {		
 		
 		Item cash50 = new Item("$50","This is $50 in cold hard cash. Might come in handy.");
+		playerInventory.addItemToInventory(cash50);
+		playerInventory.addItemToInventory(cash50);
 		playerInventory.addItemToInventory(cash50);
 		playerInventory.addItemToInventory(cash50);
 	}

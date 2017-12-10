@@ -24,6 +24,14 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	        //if a room should be unblocked (only used in one case)
 	        public String unblockDirection = "north";
 	        
+	        //if an NPC should leave after trading
+	        public String nameOfNPCToDelete = "";
+	        public String leaveText = "";
+	        
+	        //if the game should fail
+	        public boolean loseGame = false;
+	        public String loseText = "";
+	        
 	        public Node<C> addOption(String option ,C child, C data) {
 		        Node<C> childNode = new Node<C>();
 		        childNode.parent = this;
@@ -53,6 +61,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	        	System.out.println(textIfTradeHappened+"\n");
 	        	giveItem(playerInventory); //now give an item back, if you should
 	        	unblockRoom(map); //unblock a room, if you should
+	        	deleteNPC(map); //finally, get rid of the NPC if you should
 	        	return 0;
 	        }
 	        
@@ -83,10 +92,23 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].downBlocker = "";
 					break;
 				default:
+					//do nothing
 					break;
-			}
-	        	
+			}	
 	        }
+	        
+	        public void deleteNPC(Map map) {
+	        	System.out.println(leaveText+"\n");
+	        	map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].removeNPCFromRoom(nameOfNPCToDelete);
+	        }
+	        
+	        public void loseGame() {
+	        	if (loseGame == true) {
+	        		System.out.println(loseText);
+	        		System.exit(0);
+	        	}
+	        }
+	        
 	    }
 	    
 	    public void start(Inventory playerInventory, Map map) { // I don't think this is approved of by the coding gods...
@@ -107,6 +129,11 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 				throw new IOException(""); //break out if a trade happened or failed
 			}
 			
+			//check if you should lose the game
+			if (CurrentNode.loseGame == true) {
+				CurrentNode.loseGame();
+			}
+			
 	    	System.out.println(CurrentNode.data+"\n");
 	    	System.out.println("Possible responses");
 	    	System.out.println("0. Go back to previous response");
@@ -120,7 +147,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	    	String input = reader.nextLine();
 	    	if ("bye".equals(input)) {
 	    		System.out.println("You have exited the conversation.");
-	    		throw new IOException("");
+	    		throw new IOException(""); //break out
 	    	}
 	    	if ('0' == input.charAt(0)) {
 	    		if (CurrentNode.parent != null) {

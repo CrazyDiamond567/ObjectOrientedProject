@@ -24,6 +24,13 @@ public class Room {
 	public void addNPCToRoom(NPC npc) {
 		npcList.add(npc);
 	}
+	public void removeNPCFromRoom(String name) {
+		for(int i = 0; i < npcList.size(); i++) {
+			if (npcList.get(i).name.equals(name)) {
+				npcList.remove(i);
+			}
+		}
+	}
 	public void printNPCs() {
 		System.out.println("You also see the following people here...");
 		for(int i = 0; i < npcList.size(); i++) {   
