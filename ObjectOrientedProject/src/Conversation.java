@@ -21,6 +21,9 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	        public Item itemToGive = null;
 	        public String textIfTradeHappened = "";
 	        
+	        //if a room should be unblocked (only used in one case)
+	        public String unblockDirection = "north";
+	        
 	        public Node<C> addOption(String option ,C child, C data) {
 		        Node<C> childNode = new Node<C>();
 		        childNode.parent = this;
@@ -29,7 +32,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 		        return childNode;
 		    }
 	        
-	        public int takeItems(Inventory playerInventory) {
+	        public int takeItems(Inventory playerInventory, Map map) {
 	        	//incomplete...
 	        	ArrayDeque stack = new ArrayDeque(); //create a stack
 	        	
@@ -46,8 +49,10 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	        			return 0;
 	        		}
 	        	}
+	        	
 	        	System.out.println(textIfTradeHappened+"\n");
-	        	giveItem(playerInventory); //now give an item back
+	        	giveItem(playerInventory); //now give an item back, if you should
+	        	unblockRoom(map); //unblock a room, if you should
 	        	return 0;
 	        }
 	        
@@ -56,22 +61,48 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	        		playerInventory.addItemToInventory(itemToGive);
 	        	}
 	        }
+	        
+	        public void unblockRoom(Map map) {
+	        	switch (unblockDirection) {
+				case("north"):
+					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].northBlocker = "";
+					break;
+				case("south"):
+					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].southBlocker = "";
+					break;
+				case("east"):
+					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].eastBlocker = "";
+					break;
+				case("west"):
+					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].westBlocker = "";
+					break;
+				case("up"):
+					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].upBlocker = "";
+					break;
+				case("down"):
+					map.worldspace[map.currentLocation[0]][map.currentLocation[1]][map.currentLocation[2]].downBlocker = "";
+					break;
+				default:
+					break;
+			}
+	        	
+	        }
 	    }
 	    
-	    public void start(Inventory playerInventory) { // I don't think this is approved of by the coding gods...
+	    public void start(Inventory playerInventory, Map map) { // I don't think this is approved of by the coding gods...
 	    	try {
-	    		start(root, playerInventory);
+	    		start(root, playerInventory, map);
 	    	} catch (IOException ouch) {
 	    		//don't do anything....
 	    	}
 	    }
 	    
-	    public void start(Node<C> CurrentNode, Inventory playerInventory) throws IOException {
+	    public void start(Node<C> CurrentNode, Inventory playerInventory, Map map) throws IOException {
 			Scanner reader = new Scanner(System.in);
 			
 			//when you move to this node... check if you need to take an item
 			if (CurrentNode.NumTakeItems > 0) {
-				CurrentNode.takeItems(playerInventory); //gotta pass it the player inventory
+				CurrentNode.takeItems(playerInventory, map); //gotta pass it the player inventory
 				System.out.println("You have exited the conversation.");
 				throw new IOException(""); //break out if a trade happened or failed
 			}
@@ -93,24 +124,24 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	    	}
 	    	if ('0' == input.charAt(0)) {
 	    		if (CurrentNode.parent != null) {
-	    			start(CurrentNode.parent, playerInventory);
+	    			start(CurrentNode.parent, playerInventory, map);
 	    		}
 	    		else {
 	    			System.out.println("You are already at the root of the conversation.\n");
-	    			start(CurrentNode, playerInventory);
+	    			start(CurrentNode, playerInventory, map);
 	    		}
 	    	}
 	    	
 	    	if (!CurrentNode.children.isEmpty()) {
 	    		for (String option : CurrentNode.children.keySet()) {
 		    		if (option.charAt(0) == input.charAt(0)) {
-		    			start(CurrentNode.children.get(option), playerInventory);
+		    			start(CurrentNode.children.get(option), playerInventory, map);
 		    		}
 		    	}
 	    	}
 	    	
 	    	System.out.println("You didn't enter a valid number!\n");
-	    	start(CurrentNode, playerInventory);
+	    	start(CurrentNode, playerInventory, map);
 	    }
 	    
 	    

@@ -54,7 +54,7 @@ public class Controller {
 			case "talk":
 			case "t":
 				Room room = map.returnCurrentRoom();
-				room.handleTalk(inputArray[1], playerInventory);
+				room.handleTalk(inputArray[1], playerInventory, map);
 				break;
 			case "check":
 			case "c":

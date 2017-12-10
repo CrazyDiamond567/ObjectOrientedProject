@@ -8,8 +8,8 @@ public class NPC {
 		this.conversation = conversation;
 	}
 	
-	public void startConversation(Inventory playerInventory) {
-		conversation.start(playerInventory);
+	public void startConversation(Inventory playerInventory, Map map) {
+		conversation.start(playerInventory, map);
 	}
 	
 }

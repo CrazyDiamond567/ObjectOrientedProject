@@ -61,7 +61,8 @@ public class MainMethod {
 		//to go up, increase the third number to 2; to go down, decrease the third number to 0.
 		//The first floor is 0 for the third number, the second floor is 2 for the third number.
 		map.addRoomToMap(schoolEntrance, 50, 0, 0);
-			
+		schoolEntrance.northBlocker = "You can't go that way, talk to bob first!";
+		
 		Room reception = new Room("Front Reception","This is the front reception of the school, to the north is Hallway 1D, to the east is Hallway 1A");
 		map.addRoomToMap(reception, 50, 1, 0);
 		
@@ -76,7 +77,6 @@ public class MainMethod {
 		
 		Room hall1DSection2 = new Room("Hall 1D (Section 2)", "You are in Hall 1D, it continues to the north and south, to the west is classroom 1D2");
 		map.addRoomToMap(hall1DSection2, 50, 3, 0);
-		hall1DSection2.westBlocker = "This door is locked!";
 		
 		Room classroom1D2 = new Room("Classroom 1D2", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
 				+ " You sense you are in the wrong classroom. The east exit leads to hall 1D");
@@ -367,11 +367,13 @@ public class MainMethod {
 		
 		//example conversation
 		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob and I am an example NPC!");
-		Conversation.Node node1 = conversation1.root.addOption("1. Here, have $100 dollars! (Give $100 dollars)", "node1", "You don't have enough money!");
-		node1.itemToGive = key1D2;
-		node1.nameOfItemToTake = "$50";
+		Conversation.Node node1 = conversation1.root.addOption("1. Here, have $100 dollars! (Give $100 dollars)", "node1", "");
+		
 		node1.NumTakeItems = 2;
-		node1.textIfTradeHappened = "here, have a key!";
+		node1.nameOfItemToTake = "$50";
+		node1.itemToGive = key1D2;
+		node1.textIfTradeHappened = "here, have a key! and I unblocked the door!";
+		node1.unblockDirection = "north";
 		
 		//example npc
 		NPC npc1 = new NPC("bob", conversation1);
