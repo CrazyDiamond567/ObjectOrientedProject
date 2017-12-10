@@ -12,9 +12,14 @@ public class Inventory {
 	public Item removeItemFromInventory(String name) {
 		for(int i = 0; i < itemList.size(); i++) {
 			if (itemList.get(i).name.equals(name)) {
-				Item removedItem = itemList.get(i);
-				itemList.remove(i);
-				return removedItem;
+				if (itemList.get(i).moveable == true) {
+					Item removedItem = itemList.get(i);
+					itemList.remove(i);
+					return removedItem;
+				}
+				else {
+					System.out.println("This item cannot be picked up!");
+				}
 			}
 		}
 		return null;

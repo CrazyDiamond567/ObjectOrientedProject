@@ -2,6 +2,7 @@
 public class Item {
 	public String name = null;
 	public String description = null;
+	public boolean moveable = true;
 		
 	public Item(String n, String d) {
 		name = n;

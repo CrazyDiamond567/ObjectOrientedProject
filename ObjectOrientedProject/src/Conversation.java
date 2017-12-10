@@ -7,13 +7,13 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	    public Conversation(C rootData) {
 	        root = new Node<C>();
 	        root.data = rootData;
-	        root.children = new HashMap<String, Node<C>>();
+	        root.children = new LinkedHashMap<String, Node<C>>();
 	    }
 
 	    public class Node<C> {
 	        public C data;
 	        public Node<C> parent;
-	        public HashMap<String, Node<C>> children = new HashMap<String, Node<C>>();
+	        public HashMap<String, Node<C>> children = new LinkedHashMap<String, Node<C>>();
 	        
 	        //for trading
 	        public int NumTakeItems = 0;
@@ -135,7 +135,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 			}
 			
 	    	System.out.println(CurrentNode.data+"\n");
-	    	System.out.println("Possible responses");
+	    	System.out.println("Possible responses:");
 	    	System.out.println("0. Go back to previous response");
 	    	
 	    	for (String option : CurrentNode.children.keySet()) {

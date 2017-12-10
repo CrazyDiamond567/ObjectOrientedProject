@@ -6,6 +6,10 @@ public class Controller {
 		//single word parser
 		//I am being sure to return 0 so I never reach the second switch if any of these cases are true. Messy, but it works.
 		switch (input) {
+			case "m":
+			case "move":
+				System.out.println("move or m needs an argument to work, type 'help' for commands");
+				return 0;
 			case "help":
 				System.out.println("Command List: \n" +
 					"move or m: Moves the player in the specified direction. Example: \"move north or \"m n\". \n" +

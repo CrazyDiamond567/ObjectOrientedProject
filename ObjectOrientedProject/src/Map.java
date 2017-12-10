@@ -17,6 +17,7 @@ public class Map {
 	}
 	public void handleCheck() {
 		worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].roomInventory.listItems();
+		System.out.println("");
 		worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].printNPCs();
 	}
 	public void handleDrop(Item tempitem) {

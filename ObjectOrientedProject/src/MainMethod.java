@@ -30,7 +30,11 @@ public class MainMethod {
 		startingInventory(playerInventory);
 		
 		//starting text
-		System.out.println("This is an incomplete game. You can move around and talk to an NPC. Type 'help' for a list of commands.");
+		System.out.println("You are a student.\n"
+				+ "The objective of this game is to find your classroom (Physics 7).\n"
+				+ "Type 'help' for a list of commands.\n"
+				+ "Type 'help' followed by the name of a command for more specific information about that command.\n"
+				+ "If you think the music is terrible, type 'stop music'.");
 		
 		while (true) {
 			System.out.print("input > ");
@@ -52,7 +56,9 @@ public class MainMethod {
 		//FLOOR 1
 		
 		//first you create the room. The first argument is the name, the second argument is the description. Make sure to note which ways you can go.
-		Room schoolEntrance = new Room("School Entrance","entrance of school, to the north is the front reception");
+		Room schoolEntrance = new Room("School Entrance","You regard the grey concrete of the entrance of the school, resenting how unprepared you are.\n"
+				+ "Funny, you don't really remember how you got here. Guess it was just too much booze.\n"
+				+ "To the north is the front reception.");
 		
 		//This adds the room to the map. The first argument is the room you will be adding,
 		//The coordinate system is column, row, "floor"
@@ -61,9 +67,13 @@ public class MainMethod {
 		//to go up, increase the third number to 2; to go down, decrease the third number to 0.
 		//The first floor is 0 for the third number, the second floor is 2 for the third number.
 		map.addRoomToMap(schoolEntrance, 50, 0, 0);
-		schoolEntrance.northBlocker = "You can't go that way, talk to bob first!";
 		
-		Room reception = new Room("Front Reception","This is the front reception of the school, to the north is Hallway 1D, to the east is Hallway 1A");
+		//example room blocker, delete once game is done
+		//schoolEntrance.northBlocker = "You can't go that way, talk to bob first!";
+		
+		Room reception = new Room("Front Reception","The Front Reception is a cheerful room, contrasting the lifelessness of the world outside.\n"
+				+ "You see the Dean of the School, greeting students as they walk in.\n"
+				+ "to the north is Hallway 1D, to the east is Hallway 1A");
 		map.addRoomToMap(reception, 50, 1, 0);
 		
 		
@@ -106,7 +116,7 @@ public class MainMethod {
 		map.addRoomToMap(hall1CSection1, 51, 7, 0);
 		
 		// cafeteria 
-		Room cafeteria = new Room("Cafeteria","This is the cafeteria area for the students, the place for all the yummy foods. To the north is Hallway 1C");
+		Room cafeteria = new Room("Cafeteria","This is the cafeteria area for the students, the place for all the yummy foods. To the north is Hallway 1C, to the west is Hallway 1D.");
 		map.addRoomToMap(cafeteria, 51, 6, 0);
 		
 		Room hall1CSection2 = new Room("Hall 1C (Section 2)", "You are in Hall 1C, it continues to the west and east, to the north is a men's bathroom");
@@ -127,7 +137,7 @@ public class MainMethod {
 		map.addRoomToMap(hall1CSection4, 54, 7, 0);
 		
 		// women's bathroom
-		Room womenbathroom = new Room("Women's Bathroom","This is the Women's Bathroom for the students, To the south is Hallway 1C");
+		Room womenbathroom = new Room("Women's Bathroom","This is the Women's Bathroom. You feel like you shouldn't be here. To the south is Hallway 1C");
 		map.addRoomToMap(womenbathroom, 54, 8, 0);
 		
 		Room hall1CSection5 = new Room("Hall 1C (Section 5)", "You are in Hall 1C, it continues to the west and east, to the south is classroom 1C5B5");
@@ -362,10 +372,13 @@ public class MainMethod {
 		map.addRoomToMap(teacherslounge, 55, 2, 2);
 		
 		//Example item
+		/**
 		int[] KeyArray1D2 = {50,3,0};
 		Key key1D2 = new Key("1D2Key","This unlocks room 1D2", KeyArray1D2, "west");
+		**/
 		
 		//example conversation, delete once game is done
+		/**
 		Conversation<String> conversation1 = new Conversation<String>("Hello, my name is bob and I am an example NPC!");
 		Conversation.Node node1 = conversation1.root.addOption("1. Here, have $100 dollars! (Give $100 dollars)", "node1", "");
 		
@@ -379,18 +392,52 @@ public class MainMethod {
 		
 		Conversation.Node node2 = conversation1.root.addOption("2. I hate your guts!", "node2", "");
 		node2.loseGame = true;
-		node2.loseText = "bob thinks you out of existence. Reality Warping is broken";
+		node2.loseText = "bob thinks you out of existence.";
 				
 		//example npc
 		NPC npc1 = new NPC("bob", conversation1);
 				
 		//add npc to room
 		schoolEntrance.addNPCToRoom(npc1);
+		**/
+		//Items in Rooms
+		Item courseSchedule = new Item("CourseSchedule", "You look at the Course Schedule, and find that Physics 7 is in 2A1D1.\n"
+				+ "That is on the second floor, you will need to find a way up...") ;
+		courseSchedule.moveable = false;
+		cafeteria.roomInventory.addItemToInventory(courseSchedule);
+		
+		//NPC's
+		
+		//Dean Borben
+		Conversation<String> conversationBorben = new Conversation<String>("The stooping dean turns to face you, his ill fitting suit seeming to shift with him a little too late.\n"
+				+ "'Hello young man! Is there anything this old man can help you with today?'");
+		Conversation.Node BorbenNode1 = conversationBorben.root.addOption("1. Where is the Physics 7 classroom?", "Node1", "'I haven't the slightest idea.' the dean booms jovially.\n"
+				+ "'But there is a Course Schedule located in the cafeteria, perhaps you can find out there.' the dean finishes.");
+		Conversation.Node BorbenNode2 = conversationBorben.root.addOption("2. Where can I buy books?", "Node2", "'Books can be bought in the library.' the dean says with a little too much enthusiasm.");
+		
+		NPC deanBorben = new NPC("Borben", conversationBorben);
+		
+		reception.addNPCToRoom(deanBorben);
+		
+		//Student Lorry
+		Conversation<String> conversationLorry = new Conversation<String>("This custodian was staring at you before you went to talk to him. He addresses you in a shaking voice.\n"
+				+ "'I... I know that you are in Physics 7. And... and I know that you need your textbook.'");
+		Conversation.Node LorryNode1 = conversationLorry.root.addOption("1. How could you possibly know that?", "Node1", "'I can't say.' His voice doesn't shake at all.\n"
+				+ "You silently suspect this custodian is a few cards short of a deck.");
+		Conversation.Node LorryNode2 = conversationLorry.root.addOption("2. Where is Physics 7?", "Node2", "He points at the course schedule without speaking. He is still shaking, silently.");
+		Conversation.Node LorryNode3 = conversationLorry.root.addOption("3. I need a textbook for Physics 7?", "Node3", "He gives a shaky nod");
+		Conversation.Node LorryNode4 = conversationLorry.root.children.get("3. I need a textbook for Physics 7?").addOption("1. Where can I get one?", "Node4", "'The... the dean should have told you on the way in.'\n"
+				+ "He silently mutters under his breath, and then stops.\n"
+				+ "'Go see the student worker in the student lounge.' He says this as though it were an order.");
+		
+		NPC custodianLorry = new NPC("Lorry", conversationLorry);
+		
+		cafeteria.addNPCToRoom(custodianLorry);
 	}
 	
 	public static void startingInventory(Inventory playerInventory) {		
 		
-		Item cash50 = new Item("$50","This is $50 in cold hard cash. Might come in handy.");
+		Item cash50 = new Item("$50","This is $50 in cold hard cash. Money does make the world go round.");
 		playerInventory.addItemToInventory(cash50);
 		playerInventory.addItemToInventory(cash50);
 		playerInventory.addItemToInventory(cash50);
