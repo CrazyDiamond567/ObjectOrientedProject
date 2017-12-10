@@ -24,6 +24,13 @@ public class Room {
 	public void addNPCToRoom(NPC npc) {
 		npcList.add(npc);
 	}
+	public void printNPCs() {
+		System.out.println("You also see the following people here...");
+		for(int i = 0; i < npcList.size(); i++) {   
+		    System.out.print(npcList.get(i).name + ", ");
+		}
+		System.out.println();
+	}
 	
 	public void handleTalk(String npcName) {
 		NPC npc = searchRoomForNPC(npcName);

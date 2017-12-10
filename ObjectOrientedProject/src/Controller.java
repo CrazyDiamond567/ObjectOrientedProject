@@ -59,12 +59,12 @@ public class Controller {
 			case "check":
 			case "c":
 				if (inputArray[1].equals("inventory")) {
-					System.out.println("ruffling through your pockets, you see a...");
+					System.out.println("Ruffling through your pockets, you see a...");
 					playerInventory.listItems();
 					break;
 				}
 				else if (inputArray[1].equals("room")) {
-					System.out.println("carefully checking the room, you see a...");
+					System.out.println("Carefully checking the room, you see a...");
 					map.handleCheck();
 					break;
 				}

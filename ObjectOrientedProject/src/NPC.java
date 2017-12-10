@@ -11,4 +11,6 @@ public class NPC {
 	public void startConversation() {
 		conversation.start();
 	}
+	
+	
 }

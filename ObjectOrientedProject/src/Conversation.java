@@ -14,6 +14,7 @@ public class Conversation<C> { //java generics are cool. learn something new eve
 	        public C data;
 	        public Node<C> parent;
 	        public HashMap<String, Node<C>> children = new HashMap<String, Node<C>>();
+	        public boolean visited = true;
 	        
 	        public Node<C> addOption(String option ,C child, C data) {
 		        Node<C> childNode = new Node<C>();
