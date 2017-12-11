@@ -116,14 +116,15 @@ public class MainMethod {
 		map.addRoomToMap(hall1CSection1, 51, 7, 0);
 		
 		// cafeteria 
-		Room cafeteria = new Room("Cafeteria","This is the cafeteria area for the students, the place for all the yummy foods. To the north is Hallway 1C, to the west is Hallway 1D.");
+		Room cafeteria = new Room("Cafeteria","This is the school cafeteria, the food here smells... suprisingly good, but you don't have time to think about that.\n"
+				+ "To the north is Hallway 1C, to the west is Hallway 1D.");
 		map.addRoomToMap(cafeteria, 51, 6, 0);
 		
 		Room hall1CSection2 = new Room("Hall 1C (Section 2)", "You are in Hall 1C, it continues to the west and east, to the north is a men's bathroom");
 		map.addRoomToMap(hall1CSection2, 52, 7, 0);
 		
 		// men's bathroom
-		Room menbathroom = new Room("Men's Bathroom","This is the Men's Bathroom for the students, To the south is Hallway 1C");
+		Room menbathroom = new Room("Men's Bathroom","This is the Men's Bathroom. It smells like... garlic? To the south is Hallway 1C");
 		map.addRoomToMap(menbathroom, 52, 8, 0);
 		
 		Room hall1CSection3 = new Room("Hall 1C (Section 3)", "You are in Hall 1C, it continues to the west and east, to the south is classroom 1C3");
@@ -197,7 +198,8 @@ public class MainMethod {
 		map.addRoomToMap(hall1ASection5, 55, 1, 0);
 		
 		// student lounge 
-		Room studentlounge = new Room("StudentLounge","This is the break room for the students, to the south is Hallway 1A");
+		Room studentlounge = new Room("StudentLounge","This is the break room for the students, but this is hardly the time for you to be taking a break.\n"
+				+ "You see a student worker slowly adding items to the Bulletin Board. To the south is Hallway 1A.");
 		map.addRoomToMap(studentlounge, 55, 2, 0);
 		
 		Room hall1ASection4 = new Room("Hall 1A (Section 4)", "You are in Hall 1A, it continues to the west and east, to the south is classroom 1A4");
@@ -267,7 +269,7 @@ public class MainMethod {
 		map.addRoomToMap(hall2CSection4, 54, 7, 2);
 		
 		//women's bathroom
-		Room womenbathroomfloor2 = new Room("Women's Bathroom","This is the Women's Bathroom for the students, To the south is Hallway 2C");
+		Room womenbathroomfloor2 = new Room("Women's Bathroom","This is the Women's Bathroom for the students. You feel like you shouldn't be here. To the south is Hallway 2C");
 		map.addRoomToMap(womenbathroomfloor2, 54, 8, 2);
 		
 		Room hall2CSection3 = new Room("Hall 2C (Section 3)", "You are in Hall 2C, it continues to the west and east, to the south is classroom 2C3");
@@ -406,20 +408,32 @@ public class MainMethod {
 		courseSchedule.moveable = false;
 		cafeteria.roomInventory.addItemToInventory(courseSchedule);
 		
+		Item bulletinBoard = new Item("BulletinBoard","Most of the information on the board is useless, but you do see some headlines that jump out at you.\n"
+				+ "'Students who are lost can check the Course Schedule in the Cafeteria.'\n"
+				+ "'Students should be on the lookout for a male student in a trenchcoat selling illicit substances to students.\n"
+				+ "Worse than that, he is undercutting our library by selling used books.'");
+		bulletinBoard.moveable = false;
+		studentlounge.roomInventory.addItemToInventory(bulletinBoard);
+		
+		Item cash50 = new Item("$50","This is $50 in cold hard cash. Money does make the world go round.");
+		womenbathroom.roomInventory.addItemToInventory(cash50);
+		
+		Item textbook = new Item("Physics7Textbook","This is supposedly the book you need for Physics 7.");
+		
 		//NPC's
 		
 		//Dean Borben
 		Conversation<String> conversationBorben = new Conversation<String>("The stooping dean turns to face you, his ill fitting suit seeming to shift with him a little too late.\n"
 				+ "'Hello young man! Is there anything this old man can help you with today?'");
 		Conversation.Node BorbenNode1 = conversationBorben.root.addOption("1. Where is the Physics 7 classroom?", "Node1", "'I haven't the slightest idea.' the dean booms jovially.\n"
-				+ "'But there is a Course Schedule located in the cafeteria, perhaps you can find out there.' the dean finishes.");
-		Conversation.Node BorbenNode2 = conversationBorben.root.addOption("2. Where can I buy books?", "Node2", "'Books can be bought in the library.' the dean says with a little too much enthusiasm.");
+				+ "'But there is a Course Schedule located in the cafeteria to the north, perhaps you can find out there.' the dean finishes.");
+		Conversation.Node BorbenNode2 = conversationBorben.root.addOption("2. Where can I buy books?", "Node2", "'Books can be bought in the library on the second floor.' the dean says with a little too much enthusiasm.");
 		
 		NPC deanBorben = new NPC("Borben", conversationBorben);
 		
 		reception.addNPCToRoom(deanBorben);
 		
-		//Student Lorry
+		//Custodian Lorry
 		Conversation<String> conversationLorry = new Conversation<String>("This custodian was staring at you before you went to talk to him. He addresses you in a shaking voice.\n"
 				+ "'I... I know that you are in Physics 7. And... and I know that you need your textbook.'");
 		Conversation.Node LorryNode1 = conversationLorry.root.addOption("1. How could you possibly know that?", "Node1", "'I can't say.' His voice doesn't shake at all.\n"
@@ -428,18 +442,49 @@ public class MainMethod {
 		Conversation.Node LorryNode3 = conversationLorry.root.addOption("3. I need a textbook for Physics 7?", "Node3", "He gives a shaky nod");
 		Conversation.Node LorryNode4 = conversationLorry.root.children.get("3. I need a textbook for Physics 7?").addOption("1. Where can I get one?", "Node4", "'The... the dean should have told you on the way in.'\n"
 				+ "He silently mutters under his breath, and then stops.\n"
-				+ "'Go see the student worker in the student lounge.' He says this as though it were an order.");
+				+ "'Go see the student worker in the student lounge, in the opposite end of the school.' He says this as though it were an order.");
 		
 		NPC custodianLorry = new NPC("Lorry", conversationLorry);
 		
 		cafeteria.addNPCToRoom(custodianLorry);
+		
+		//Student Worker Hambone
+		Conversation<String> conversationHambone = new Conversation<String>("This student worker seems... out of it. After trying to get his attention for more than a few moments, his glassy eyes finally turn to meet yours.\n"
+				+ "'Peace man, like, what can I do for you?'");
+		Conversation.Node HamboneNode1 = conversationHambone.root.addOption("1. Where is Physics 7?", "Node1", "'I don't know man, go look at the course schedule like all the other fishies.'\n"
+				+ "It doesn't look like he is interested in helping you.");
+		Conversation.Node HamboneNode2 = conversationHambone.root.addOption("2. Where can I get textbooks?", "Node2", "'I don't know man, but if you want some shrooms, go see the dealer in the men's bathroom.'\n"
+				+ "You don't want any shrooms, but it might be worth it to see this dealer anyway. If you can afford the time.");
+		
+		NPC studentHambone = new NPC("Hambone", conversationHambone);
+		
+		studentlounge.addNPCToRoom(studentHambone);
+		
+		//SketchyDude
+		Conversation<String> conversationDude = new Conversation<String>("Following the smell of garlic, you slowly open one of the bathroom stalls. Inside you see a guy in a black trenchcoat. He smells like garlic.\n"
+				+ "'You have entered my domain, have you come to offer tribute to the lord of the bathroom?'\n"
+				+ "The smell of garlic is starting to make you feel sick.");
+		Conversation.Node DudeNode1 = conversationDude.root.addOption("1. Why the garlic?","Node1","'Vampires'. He nods simply, as though this were a reasonable answer.\n"
+				+ "You still can't tell if this is an act or not.");
+		Conversation.Node DudeNode2 = conversationDude.root.addOption("2. I heard you sell textbooks.", "Node2", "He sighs. 'Damn it, nobody ever wants the shrooms. Well, almost nobody.'");
+		Conversation.Node DudeNode3 = conversationDude.root.children.get("2. I heard you sell textbooks.").addOption("1. I want the textbook for Physics 7. (Give $50).", "Node3", "");
+		DudeNode3.NumTakeItems = 1;
+		DudeNode3.nameOfItemToTake = "$50";
+		DudeNode3.itemToGive = textbook;
+		DudeNode3.textIfTradeHappened = "'Here, have the textbook. I gotta move, the authorities are onto me. If the library asks, you never met me'";
+		DudeNode3.nameOfNPCToDelete = "SketchyDude";
+		DudeNode3.leaveText = "He quickly runs out of the bathroom. Despite him leaving, the area still smells like garlic.";
+		
+		NPC sketchyDude = new NPC("SketchyDude", conversationDude);
+		
+		menbathroom.addNPCToRoom(sketchyDude);
+		
+		//
 	}
 	
 	public static void startingInventory(Inventory playerInventory) {		
 		
 		Item cash50 = new Item("$50","This is $50 in cold hard cash. Money does make the world go round.");
-		playerInventory.addItemToInventory(cash50);
-		playerInventory.addItemToInventory(cash50);
 		playerInventory.addItemToInventory(cash50);
 		playerInventory.addItemToInventory(cash50);
 	}
