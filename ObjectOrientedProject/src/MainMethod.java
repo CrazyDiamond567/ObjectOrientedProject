@@ -150,12 +150,13 @@ public class MainMethod {
 		
 		
 		// intersection 1B 1C
-		Room hall1B1CIntersection = new Room("Hall 1B 1C Intersection", "This is the intersection of two hallways, 1B to the south and 1C to the west");
+		Room hall1B1CIntersection = new Room("Hall 1B 1C Intersection", "This is the intersection of two hallways, 1B to the south and 1C to the west. To the north is a stairwell.");
 		map.addRoomToMap(hall1B1CIntersection, 56, 7, 0);
 		
 		// Stairwell
 		Room stairwellLevel1 = new Room("Stairwell (Level 1)", "This is the Stairwell, It continues upwards; To the south is intersection of two hallways, 1B to the south and 1C to the west");
 		map.addRoomToMap(stairwellLevel1, 56, 8, 0);
+		stairwellLevel1.upBlocker = "As you go up the stairwell, you find your path blocked by two fighting students.";
 		
 		Room stairwellLevelHalf = new Room("Stairwell (Level 1.5)", "This is the Stairwell, It continues upwards and downwards");
 		map.addRoomToMap(stairwellLevelHalf, 56, 8, 1);
@@ -229,7 +230,7 @@ public class MainMethod {
 		//FLOOR 2
 		
 		//Hall 2B 2C Intersection
-		Room hall2B2CIntersection = new Room("Hall 2B 2C Intersection", "This is the intersection of two hallways, 2B to the south and 2C to the west");
+		Room hall2B2CIntersection = new Room("Hall 2B 2C Intersection", "This is the intersection of two hallways, 2B to the south and 2C to the west, to the north is a stairwell.");
 		map.addRoomToMap(hall2B2CIntersection, 56, 7, 2);
 		
 		
@@ -291,7 +292,7 @@ public class MainMethod {
 		map.addRoomToMap(hall2CSection1, 51, 7, 2);
 		
 		//library
-		Room library = new Room("Library","This is the library for the students, To the north is Hallway 2C");
+		Room library = new Room("Library","This is the library. You see a librarian at the desk, To the north is Hallway 2C, to the west is Hallway 2D");
 		map.addRoomToMap(library, 51, 6, 2);
 		
 		//Hall 2D 2C Intersection
@@ -479,7 +480,74 @@ public class MainMethod {
 		
 		menbathroom.addNPCToRoom(sketchyDude);
 		
-		//
+		//DixieandAbel
+		//main flow
+		Conversation<String> conversationDixieAbel = new Conversation<String>("Annoyed at your inability to progress, you take a closer look at the fighting students.\n"
+				+ "One of them is a woman with a short haircut; dressed in a leather jacket and jeans.\n"
+				+ "The other is also a woman, with long flowing hair; dressed in... a dress.\n"
+				+ "The woman in the dress is clearly winning despite her handicap, and the jacket-clad woman is looking slightly worse for wear.\n"
+				+ "You interrupt thier fight with a loud shout. Both turn to face you.");
+		Conversation.Node FightNode1 = conversationDixieAbel.root.addOption("1. Why are you fighting?","Node1","The long haired woman addresses you in a neutral voice.\n"
+				+ "'My money was stolen by that woman. Can you help me get it back?'\n"
+				+ "The short haired woman immediately replies. 'I did not steal her money and I am not giving her mine!'\n"
+				+ "Great. So now you have to resolve a dispute to pass.");
+		Conversation.Node FightNode5 = conversationDixieAbel.root.children.get("1. Why are you fighting?").addOption("1. (To the long-haired woman) Why do you think she stole your money?", "Node5",
+				"'She has had something against me for a long time. I used the bathroom, and left my purse on the counter.\n"
+				+ "When I checked my purse, the $50 bill was missing. She was the only other person in the bathroom'\n"
+				+ "She says this all without showing any emotion on her face.");
+		
+		Conversation.Node FightNode6 = conversationDixieAbel.root.children.get("1. Why are you fighting?").children.get("1. (To the long-haired woman) Why do you think she stole your money?").addOption(
+				"1. If I give you $50, that should resolve this, right? (Give the Long Haired Woman $50)", "Node6", "");
+		FightNode6.NumTakeItems = 1;
+		FightNode6.nameOfItemToTake = "$50";
+		FightNode6.unblockDirection = "up";
+		FightNode6.textIfTradeHappened = "'Yes. If you are really willing to stick up for that woman.' The long-haired woman takes the money and leaves.";
+		FightNode6.nameOfNPCToDelete = "FightingStudents";
+		FightNode6.leaveText = "The short-haired woman regards you angrily. 'You shouldn't have done that. I didn't take her money.'\n"
+				+ "Having said that, she leaves as well.";
+		
+		Conversation.Node FightNode7 = conversationDixieAbel.root.children.get("1. Why are you fighting?").children.get("1. (To the long-haired woman) Why do you think she stole your money?").addOption(
+				"2. You dropped this in the bathroom. (Give the Long Haired Woman $50)", "Node7", "");
+		FightNode7.NumTakeItems = 1;
+		FightNode7.nameOfItemToTake = "$50";
+		FightNode7.unblockDirection = "up";
+		FightNode7.textIfTradeHappened = "'Oh. In that case I apologize.' The long-haired woman takes the money and leaves.\n"
+				+ "Just like that. Without saying anything more.";
+		FightNode7.nameOfNPCToDelete = "FightingStudents";
+		FightNode7.leaveText = "The short-haired woman remarks, 'I don't know why she hates me, but I have had enough of this shit.'\n"
+				+ "Having said that, she leaves as well. You are tempted to ask if she is alright, but she is gone before you get the chance.";
+		
+		//other options
+		Conversation.Node FightNode2 = conversationDixieAbel.root.addOption("2. Can you move so I can pass?", "Node2", "The long haired woman slightly shifts to block your way.\n"
+				+ "'I am being bullied, and the right thing for you to do would be to help me out.'\n"
+				+ "She says this with absolute conviction. You won't be able to pass unless you resolve the situation.");
+		Conversation.Node FightNode3 = conversationDixieAbel.root.addOption("3. (Punch the long-haired woman)","Node3","");
+		FightNode3.loseGame = true;
+		FightNode3.loseText = "Your sucker-punch catches the long haired woman by suprise, and your fist makes contact with her face in a rather satisfying way.\n"
+				+ "However, she recovers fast, and her foot moves at blinding speed towards your head. When it connects, your world goes black.\n"
+				+ "GAME OVER";
+		Conversation.Node FightNode4 = conversationDixieAbel.root.addOption("4. (Punch the short-haired woman)","Node3","");
+		FightNode4.loseGame = true;
+		FightNode4.loseText = "The short haired woman attempts to dodge your strike, but is slowed by the damage she has already incured.\n"
+				+ "You manage to K.O. her, but the Dean of the School chooses that moment to leave his position in the doorway, and he sees you punching another student.\n"
+				+ "As a result, you are expelled.\n"
+				+ "GAME OVER";
+		
+		NPC FightingStudents = new NPC("FightingStudents", conversationDixieAbel);
+		stairwellLevel1.addNPCToRoom(FightingStudents); 
+		
+		//Librarian Cindy
+		Conversation<String> conversationCindy = new Conversation<String>("This young librarian has pink hair. It isn't dyed, its just pink. She seems to shake with hidden energy.\n"
+				+ "'HELLO. HOW CAN I HELP YOU!?' She shouts at the top of her lungs.\n"
+				+ "Doesn't this girl know that this is a library?");
+		Conversation.Node CindyNode1 = conversationCindy.root.addOption("1. I want to buy the Physics 7 textbook (Give $100 dollars)", "Node1", "");
+		CindyNode1.NumTakeItems = 2;
+		CindyNode1.nameOfItemToTake = "$50";
+		CindyNode1.itemToGive = textbook;
+		CindyNode1.textIfTradeHappened = "'THANKS. HAVE A GREAT DAY!' Your head hurts.";
+		
+		NPC librarianCindy = new NPC("Cindy", conversationCindy);
+		library.addNPCToRoom(librarianCindy);
 	}
 	
 	public static void startingInventory(Inventory playerInventory) {		

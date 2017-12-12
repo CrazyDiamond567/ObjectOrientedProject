@@ -8,6 +8,8 @@ public class Controller {
 		switch (input) {
 			case "m":
 			case "move":
+			case "m ":
+			case "move ":
 				System.out.println("move or m needs an argument to work, type 'help' for commands");
 				return 0;
 			case "help":
