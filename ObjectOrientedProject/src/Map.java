@@ -11,6 +11,17 @@ public class Map {
 	public Room returnCurrentRoom() {
 		return worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]];
 	}
+	public void handleWin() {
+		if (returnCurrentRoom() == worldspace[51][2][2]) {
+			System.out.println("you take your seat, having made it just in time.\n"
+					+ "How prepared you are depends on whether you managed to get a textbook or not.\n\n" +
+					"YOU WIN!\n");
+			System.exit(0);
+		}
+		else {
+			System.out.println("You haven't won yet");
+		}
+	}
 	public void handleLook() {
 		System.out.println("Room Name: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].name);
 		System.out.println("Room Description: "+worldspace[currentLocation[0]][currentLocation[1]][currentLocation[2]].description);

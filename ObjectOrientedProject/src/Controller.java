@@ -3,9 +3,13 @@ import java.util.*;
 public class Controller {
 		
 	public int parseInput(String input, Map map, Helper helper, Inventory playerInventory, Thread t1) {
+		
 		//single word parser
 		//I am being sure to return 0 so I never reach the second switch if any of these cases are true. Messy, but it works.
 		switch (input) {
+			case "Win Game":
+				map.handleWin();
+				break;
 			case "m":
 			case "move":
 			case "m ":
@@ -15,8 +19,18 @@ public class Controller {
 			case "help":
 				System.out.println("Command List: \n" +
 					"move or m: Moves the player in the specified direction. Example: \"move north or \"m n\". \n" +
+					"look: repeats the name and description of the room" +
+					"check room: checks the room for items and npcs" +
+					"check inventory: checks your inventory" +
+					"inspect: gets an items description" +
+					"drop: drops an item" +
+					"pickup: picks an item up" +
+					"use: uses an item" +
 					"talk or t: Talks to the target NPC. Example: \"talk bob\" or \"t bob\". \n" +
-					"exit: Exits the conversation.");
+					"bye: Exits the conversation." +
+					"stop music: stops the music" +
+					"resume music: resumes the music" +
+					"quit: quits the game. careful, as there is no save");
 				return 0;
 				
 			case "look":

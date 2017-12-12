@@ -335,8 +335,8 @@ public class MainMethod {
 		map.addRoomToMap(hall2ASection1, 51, 1, 2);
 		
 		//Classroom 2A1D1
-		Room classroom2A1D1 = new Room("Classroom 2A1D1", "This class is obviously in session. The eyes of the whole class turn to meet yours.\n"
-				+ " You sense you are in the wrong classroom. The south exit leads to hall 2A");
+		Room classroom2A1D1 = new Room("Classroom 2A1D1", "This is the right classroom. You feel right at home here.\n"
+				+ "Type 'Win Game' to win the game. The south exit leads to hall 2A, but why would you want to leave?");
 		map.addRoomToMap(classroom2A1D1, 51, 2, 2);
 		
 		Room hall2ASection2 = new Room("Hall 2A (Section 2)", "You are in Hall 2A, it continues to the east and south, to the east is Hall 2A");
